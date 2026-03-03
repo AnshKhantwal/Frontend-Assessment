@@ -1,16 +1,45 @@
-# React + Vite
+# APS- Frontend UI Assesment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based frontend which is built as a part of an assesment.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- React-icons
+- React-router
+- Css
 
-## React Compiler
+## Features/Screens
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **SignUp**
+- **Dashboard**
+- **ScanPage**
+- **Toast Notification**
+- **Responsive**
 
-## Expanding the ESLint configuration
+## Data(Mock Data)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+All data is in 'src/assets/mock-data'. The dashboard reads from `scans.json`, and the scan detail page reads from `live-scan.json`. A helper in `src/data/mockData.js` transforms the JSON into the shapes the components expect. No backend or API calls needed.
+
+## How to start
+
+- npm install
+- npm run dev
+
+open (https://localhost:5173)
+
+## Project Structure
+
+src/
+    assets/
+        mock-data/
+    components/
+        Dashboard/
+        ScanDetail/
+        Sidebar/
+        Signuppage/
+        /Toast
+    context/
+        ThemeContext.jsx
+    data/
+        mockData.js
