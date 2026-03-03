@@ -11,11 +11,11 @@ A React-based frontend which is built as a part of an assesment.
 
 ## Features/Screens
 
-- **SignUp**
-- **Dashboard**
-- **ScanPage**
-- **Toast Notification**
-- **Responsive**
+- **SignUp** with form validation and social login buttons
+- **Dashboard** showing organization-level stats, severity overview cards, and a searchable scan table
+- **ScanPage** page with a live progress ring, phase stepper, streaming activity log, and finding log — all driven by a simulated 30-second scan timer
+- **Toast Notification** system alerts for validation/messages (success, warning, error)
+- **Responsive** sidebar converts to a slide-out drawer on mobile
 
 ## Data(Mock Data)
 
