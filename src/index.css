@@ -21,7 +21,6 @@ html, body {
   padding: 0;
   min-width: 320px;
   height: 100%;
-  overflow: hidden;
 }
 
 #root {
