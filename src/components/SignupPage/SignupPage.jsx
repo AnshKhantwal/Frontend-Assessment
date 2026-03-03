@@ -24,13 +24,19 @@ function SignupPage() {
   function onSubmit(e) {
     e.preventDefault()
 
-    if (!first.trim()) return showToast('First name is required')
-    if (!last.trim()) return showToast('Last name is required')
-    if (!email.trim()) return showToast('Email is required')
-    if (!isValidEmail(email)) return showToast('Enter a valid email')
-    if (!pass) return showToast('Password is required')
-    if (pass.length < 8) return showToast('Password must be 8+ characters')
-    if (!agreed) return showToast('Please agree to the terms')
+    // collect every empty / invalid field at once
+    let missing = []
+    if (!first.trim()) missing.push('First name')
+    if (!last.trim()) missing.push('Last name')
+    if (!email.trim()) missing.push('Email')
+    else if (!isValidEmail(email)) missing.push('Valid email')
+    if (!pass) missing.push('Password')
+    else if (pass.length < 8) missing.push('Password (8+ chars)')
+    if (!agreed) missing.push('Terms agreement')
+
+    if (missing.length) {
+      return showToast(missing.join(', ') + ' required')
+    }
 
     localStorage.setItem('user', JSON.stringify({ firstName: first, lastName: last, email }))
     showToast('Account created!', 'success')
@@ -96,7 +102,7 @@ function SignupPage() {
             Already have an account? <a href="#" className="link-teal">Log in</a>
           </p>
 
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} noValidate>
             <input
               type="text"
               placeholder="First name*"
