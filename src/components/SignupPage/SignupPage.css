@@ -1,0 +1,407 @@
+.signup-page {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  background: #0F0F0F;
+  position: relative;
+  overflow: hidden;
+}
+
+.signup-page::before {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 10%;
+  width: 600px;
+  height: 450px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(12, 200, 168, 0.4) 0%,
+    rgba(12, 200, 168, 0.2) 25%,
+    rgba(20, 100, 140, 0.15) 45%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.signup-page::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: 5%;
+  width: 600px;
+  height: 500px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(220, 80, 20, 0.45) 0%,
+    rgba(200, 60, 15, 0.3) 25%,
+    rgba(180, 40, 10, 0.15) 50%,
+    transparent 75%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.signup-left {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 48px 64px;
+  z-index: 1;
+}
+
+.signup-left-content {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  padding-top: 0;
+}
+
+
+/* logo */
+.signup-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 80px;
+}
+
+.signup-logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-logo-text {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+
+/* tagline */
+.signup-tagline {
+  margin-bottom: 40px;
+}
+
+.signup-tagline h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.signup-tagline .highlight {
+  color: #0CC8A8;
+  font-style: italic;
+}
+
+
+/* keypoints */
+.signup-features {
+  margin-bottom: 60px;
+}
+
+.features-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  letter-spacing: 0;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.check-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+
+/* rating */
+.signup-trustpilot {
+  margin-top: auto;
+}
+
+.trustpilot-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.trustpilot-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.trustpilot-rating {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.rating-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rating-count {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.signup-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 64px;
+  z-index: 1;
+}
+
+.signup-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 36px 36px;
+  width: 400px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.25);
+}
+
+.signup-card-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111111;
+  text-align: center;
+  margin: 0 0 8px 0;
+}
+
+.signup-card-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  text-align: center;
+  margin: 0 0 28px 0;
+}
+
+.login-link {
+  color: #0CC8A8;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+
+/* form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: #111111;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-input::placeholder {
+  color: #999999;
+  font-size: 14px;
+}
+
+.form-input:focus {
+  border-color: #0CC8A8;
+}
+
+/* Password toggle */
+.password-group {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.password-toggle:hover {
+  color: #666666;
+}
+
+.terms-group {
+  margin-top: 2px;
+}
+
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.terms-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.custom-checkbox {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition: all 0.15s ease;
+  background: #ffffff;
+}
+
+.terms-checkbox:checked + .custom-checkbox {
+  background: #0CC8A8;
+  border-color: #0CC8A8;
+}
+
+.terms-text {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #555555;
+}
+
+.terms-link {
+  color: #0CC8A8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+.create-account-btn {
+  width: 100%;
+  height: 48px;
+  background: #0CC8A8;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  margin-top: 4px;
+}
+
+.create-account-btn:hover {
+  background: #0ab596;
+}
+
+.create-account-btn:active {
+  transform: scale(0.99);
+}
+
+
+/* social-icons */
+.social-login {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.social-btn {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.social-btn:hover {
+  opacity: 0.85;
+}
+
+.social-btn:active {
+  transform: scale(0.97);
+}
+
+.apple-btn {
+  background: #111111;
+}
+
+.google-btn {
+  background: #f0f0f0;
+  border: 1px solid #e0e0e0;
+}
+
+.meta-btn {
+  background: #0081FB;
+}
