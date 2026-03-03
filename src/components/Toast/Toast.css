@@ -70,3 +70,20 @@
   from { opacity: 1; transform: translateX(0); }
   to   { opacity: 0; transform: translateX(40px); }
 }
+
+/* ---- responsive ---- */
+@media (max-width: 480px) {
+  .toast-wrap {
+    top: 16px;
+    right: 12px;
+    left: 12px;
+    align-items: stretch;
+  }
+  .toast {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+}

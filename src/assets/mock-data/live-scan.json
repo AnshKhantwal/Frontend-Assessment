@@ -1,0 +1,100 @@
+{
+  "scanOverview": {
+    "scanId": "SCAN-021",
+    "scanType": "Grey Box",
+    "target": "helpdesk.democorp.com",
+    "startedAt": "2026-03-04T09:00:00Z",
+    "credentials": 2,
+    "files": "Control.pdf",
+    "checklistsCompleted": 40,
+    "checklistsTotal": 350,
+    "overallProgress": 32,
+    "status": "Running"
+  },
+
+  "phases": [
+    { "name": "Spidering", "status": "Completed", "progress": 100 },
+    { "name": "Mapping", "status": "Completed", "progress": 100 },
+    { "name": "Testing", "status": "Running", "progress": 55 },
+    { "name": "Validating", "status": "Pending", "progress": 0 },
+    { "name": "Reporting", "status": "Pending", "progress": 0 }
+  ],
+
+  "activityLog": [
+    {
+      "timestamp": "09:00:00",
+      "level": "INFO",
+      "message": "I'll begin a systematic penetration test on {{teal}}helpdesk.democorp.com{{/teal}}. Let me start with reconnaissance and enumeration."
+    },
+    {
+      "timestamp": "09:01:00",
+      "level": "INFO",
+      "message": "Good! target is online. Now let me perform port scanning to identify running services."
+    },
+    {
+      "timestamp": "09:02:00",
+      "level": "INFO",
+      "message": "Excellent reconnaissance results:\n    - helpdesk.democorp.com: Apache httpd 2.4.65 on port 80 (web server)\nLet me probe the web server on target first to understand its structure."
+    },
+    {
+      "timestamp": "09:03:00",
+      "level": "INFO",
+      "message": "Great! I found a login page for a Help Desk Platform. I can see a useful comment: {{warn}}\"TODO: Delete the testing account (test:test)\"{{/warn}}. Let me test this credential. The login redirects to {{code}}/password/test{{/code}}. Let me follow that path and explore it."
+    },
+    {
+      "timestamp": "09:04:00",
+      "level": "INFO",
+      "message": "The POST method is not allowed on /password/test. Let me check what the JavaScript does - it posts to {{code}}'#'{{/code}} which means the current page. Let me try a different approach."
+    },
+    {
+      "timestamp": "09:05:00",
+      "level": "INFO",
+      "message": "It redirects back to /password/test. Let me check if there's an /api endpoint or look for other paths. Let me also try exploring with the {{teal}}test:test{{/teal}} password directly on other endpoints."
+    },
+    {
+      "timestamp": "09:06:00",
+      "level": "INFO",
+      "message": "Great! I can access the dashboard using the {{crit}}'X-UserId: 10032'{{/crit}} header. The dashboard shows \"Welcome, John Doe\". This suggests an {{crit}}**IDOR vulnerability**{{/crit}} - I can access any user's dashboard by just changing the X-UserId header. Let me explore more of the application..."
+    }
+  ],
+
+  "findings": [
+    {
+      "id": "FIND-001",
+      "severity": "Critical",
+      "title": "SQL Injection in Authentication Endpoint",
+      "endpoint": "/api/users/profile",
+      "detectedAt": "09:05:55",
+      "description": "Time-based blind SQL injection confirmed during authentication flow.",
+      "impact": "Allows database-level access and potential data exfiltration."
+    },
+    {
+      "id": "FIND-002",
+      "severity": "High",
+      "title": "Unauthorized Access to User Metadata",
+      "endpoint": "/api/auth/login",
+      "detectedAt": "09:07:45",
+      "description": "Authenticated low-privilege user was able to access metadata of other users.",
+      "impact": "Privilege escalation and horizontal account takeover possible."
+    },
+    {
+      "id": "FIND-003",
+      "severity": "Medium",
+      "title": "Broken Authentication Rate Limiting",
+      "endpoint": "/api/search",
+      "detectedAt": "09:06:20",
+      "description": "No effective rate limiting detected on login attempts.",
+      "impact": "Enables brute-force attack attempts."
+    }
+  ],
+
+  "footerStats": {
+    "subAgents": 0,
+    "parallelExecutions": 2,
+    "operations": 1,
+    "critical": 1,
+    "high": 1,
+    "medium": 1,
+    "low": 0
+  }
+}

@@ -4,13 +4,21 @@ import { MdSearch, MdFilterList, MdViewColumn, MdAdd, MdHome, MdAccessTime } fro
 import { showToast } from '../Toast/Toast';
 import Sidebar from '../Sidebar/Sidebar';
 import { orgStats, severityStats, scans } from '../../data/mockData';
+import { useTheme } from '../../context/ThemeContext';
 import './Dashboard.css';
 
-const statusMap = {
+const statusLight = {
   Completed: { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7' },
   Running:   { bg: '#e3f2fd', color: '#1565c0', border: '#90caf9' },
   Scheduled: { bg: '#f5f5f5', color: '#666',    border: '#ddd' },
   Failed:    { bg: '#fbe9e7', color: '#c62828', border: '#ef9a9a' },
+};
+
+const statusDark = {
+  Completed: { bg: 'rgba(46,125,50,0.15)', color: '#66bb6a', border: 'rgba(46,125,50,0.3)' },
+  Running:   { bg: 'rgba(21,101,192,0.15)', color: '#64b5f6', border: 'rgba(21,101,192,0.3)' },
+  Scheduled: { bg: 'rgba(255,255,255,0.06)', color: '#999',   border: 'rgba(255,255,255,0.1)' },
+  Failed:    { bg: 'rgba(198,40,40,0.15)',  color: '#ef5350', border: 'rgba(198,40,40,0.3)' },
 };
 
 const vulnColors = { critical: '#e53935', high: '#f57c00', medium: '#f9a825', low: '#43a047' };
@@ -19,6 +27,8 @@ const sevIcons = { critical: '⊘', high: '⚠', medium: '⚠', low: '🔍' };
 function Dashboard() {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
+  const { mode } = useTheme();
+  const statusMap = mode === 'dark' ? statusDark : statusLight;
 
   const filtered = scans.filter(s =>
     s.name.toLowerCase().includes(search.toLowerCase()) ||
